@@ -66,10 +66,11 @@ export default class UsersController {
     const body = request.only(["username", "email", "password"]);
     console.log(body)
 
-    const users = await Database.query()
+   const users = await Database.query()
       .from("users")
       .where("email", body.email)
       .select("*");
+
     if (users.length > 0) {
       return {
         massage: "Já existe um utilizador com este email.",
